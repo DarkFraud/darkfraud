@@ -1,0 +1,24 @@
+                <div class="hat">Разделы</div>
+                <div class="small_block">
+                    <div style="margin-left:30px;">
+                    {% for category in categories %}
+                        <a href="/category/{{ category.slug }}/">{{ category.title }}</a> ({{ category.post_set.all.count }})<br />
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="hat">Теги</div>
+                <div class="small_block" style="text-align: justify;">
+                    <div id="tagcloud">
+                    {% for tag in tags %}
+                        <a href="/tag/{{ tag.slug }}/" rel="{{ tag.post_set.all.count }}">{{ tag.title }}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="hat">Архив</div>
+                <div class="small_block">
+                    <div style="margin-left:30px;">
+                    {% for arhiv in arhive reversed %}
+                    <a href="/arhive/{{ arhiv|date:"Y/m/" }}">{{ arhiv|date:"Y F" }}</a><br />
+                    {% endfor %}
+                    </div>
+                </div>

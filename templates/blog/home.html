@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block menuTop %}{% endblock %}
+
+{% block menuLeft %}
+    {% include "blog/menu_left.html" %}
+{% endblock %}
+
+{% block content %}
+    {% for post in posts.object_list %}
+                <div class="hat">{{ post.title }}</div>
+                <div class="large_block">
+                    {{ post.content|safe|truncatewords_html:100 }}
+                    <div style="text-align:center; margin-bottom:5px;">
+                        Добавил: {{ post.author }} Дата: {{ post.pub_date }}<br />
+                        Раздел: {% for cat in post.categories.all %}<a href="/category/{{ cat.slug }}/">{{ cat.title }}</a> {% endfor %}<br />
+                        Теги: {% for tag in post.tags.all %}<a href="/tag/{{ tag.slug }}/">{{ tag.title }}</a> {% endfor %}
+                    </div>
+                    <a class="submit" href="/post/{{ post.pub_date|date:'Y/m/d' }}/{{ post.slug }}/#comment">Коментарии</a>
+                    <a class="submit" href="/post/{{ post.pub_date|date:'Y/m/d' }}/{{ post.slug }}/">Подробнее</a>
+                </div>
+    {% endfor %}
+    {% if posts.object_list %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">Назад</a>
+                {% endif %}
+                <span class="current">
+                    Страница {{ posts.number }} из {{ posts.paginator.num_pages }}.
+                </span>
+                {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">Вперед</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}

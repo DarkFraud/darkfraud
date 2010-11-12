@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация пользователя{% endblock %}
+
+{% block content %}
+    <div class="hat">Регистрация пользователя</div>
+    <table align="center">
+        <tr>
+            <td align="center">
+                {% if form.errors %}
+                <p class="error">Пожалуйста исправьте нижеприведённые ошибки.</p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <form action="." method="post">{% csrf_token %}
+    <table align="center">
+        <tr>
+            <td><label for="id_username">Логин:</label></td>
+            <td>{{ form.username }}</td>
+            <td>
+                {% if form.username.errors %}
+                    {{ form.errors.username }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_password1">Пароль:</label></td>
+            <td>{{ form.password1 }}</td>
+            <td>
+                {% if form.password1.errors %}
+                    {{ form.errors.password1 }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_password2">Пароль (снова):</label></td>
+            <td>{{ form.password2 }}</td>
+            <td>
+                {% if form.password2.errors %}
+                    {{ form.errors.password2 }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Зарегистрировать" /></td>
+        </tr>
+    </table>
+    </form>
+{% endblock %}

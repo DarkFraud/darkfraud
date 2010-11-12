@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+    Выйти
+{% endblock %}
+{% block content %}
+<br />
+<table>
+    <tr>
+        <td>Вы успешно вышли. <a href="/">Гланая</a></td>
+    </tr>
+</table>
+<br />
+<script type="text/javascript">
+    $(window.location).attr('href', '/');
+</script>
+{% endblock %}

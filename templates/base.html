@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Блог Кропотова Александра [Веб разработка / Web Developer] Python/Django" />
+    <meta name="description" content="Блог Кропотова Александра [Веб разработка / Web Developer] Python/Django" />
+    <meta name="google-site-verification" content="flAXnL5BeVfEKnHxPNPs1bmOuW1BcC51BfTgCVNOado" />
+    <title>{% block title %}Блог Кропотова Александра [Веб разработка / Web Developer]{% endblock %}</title>
+    <link href="/static/css/base.css" rel="stylesheet" type="text/css" />
+    <script type="text/JavaScript" src="/static/javascript/jquery-1.4.2.min.js" charset="utf-8"></script>
+    <script type="text/JavaScript" src="/static/javascript/jquery.curvycorners.source.js" charset="utf-8"></script>
+    <script src="/static/javascript/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/JavaScript" charset="utf-8">
+        $(function(){
+            settings = {
+                tl: { radius: 10 },
+                tr: { radius: 10 },
+                bl: { radius: 0 },
+                br: { radius: 0 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            }
+            $('.hat').corner(settings);
+            $('.large_block').corner({
+                tl: { radius: 0 },
+                tr: { radius: 0 },
+                bl: { radius: 10 },
+                br: { radius: 10 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            });
+            $('.small_block').corner({
+                tl: { radius: 0 },
+                tr: { radius: 0 },
+                bl: { radius: 10 },
+                br: { radius: 10 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            });
+            $('input, textarea').corner({
+                tl: { radius: 10 },
+                tr: { radius: 10 },
+                bl: { radius: 10 },
+                br: { radius: 10 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            });
+            $('.commentBlock').corner({
+                tl: { radius: 10 },
+                tr: { radius: 10 },
+                bl: { radius: 10 },
+                br: { radius: 10 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            });
+            $('.submit').corner({
+                tl: { radius: 5 },
+                tr: { radius: 5 },
+                bl: { radius: 5 },
+                br: { radius: 5 },
+                antiAlias: true,
+                autoPad: true,
+                validTags: ["div"]
+            });
+        });
+
+        $(document).ready(function(){
+            $('#tagcloud a').tagcloud({
+                size: {start: 10, end: 20, unit: "pt"}, 
+                color: {start: '#71726c', end: '#ccc'}
+            });
+            $('.hat').css({opacity: "0.4"})
+            $('.submit').css({opacity: "0.4"})
+        })
+    </script>
+</head>
+<body>
+    <div id="header">
+        <a href="/"><div style="width:230px; height:50px; float:left;"></div></a>
+        <div class="search">
+            <form action="/search/" method="get">
+                <a class="submit" href="/accounts/login/">Войти</a>
+                <a class="submit" href="/accounts/register/">Регистрация</a>
+                <input type="text" name="q" value="Поиск...">
+            </form>
+        </div>
+    </div>
+    <div id="sidebar">
+        {% block menuLeft %}{% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="footer">&copy; Alexander Kropotov "That's me"</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Администрирование' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Администрирование' %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrastyle %}
+<script type="text/javascript" src="/static/javascript/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/static/javascript/tiny_mce/jquery.tinymce.js"></script>
+<script type="text/javascript" src="/static/javascript/tiny_mce/tiny_mce_popup.js"></script>
+<script type="text/javascript" src="/static/javascript/tiny_mce/tiny_mce.js"></script> 
+{% endblock %}

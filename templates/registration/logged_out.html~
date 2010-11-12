@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    Выйти.
+{% endblock %}
+{% block content %}
+<br />
+<table align="center" style="border: solid 1px #ddd; width:250px;">
+    <tr>
+        <td>Вы успешно вышли. <a href="/">Гланая</a></td>
+    </tr>
+</table>
+{% endblock %}
