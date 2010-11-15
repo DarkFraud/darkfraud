@@ -7,12 +7,14 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.http import HttpResponseRedirect
 from darkfraud.blog.models import Category, Tag, Post, Comment
+from darkfraud.menu.models import Menu
 
 from django import forms
 from django.shortcuts import render_to_response
 from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
+    menu = Menu.objects.all().order_by('id')
     posts = Post.objects.filter(status = 1).order_by('-pub_date')
     categories = Category.objects.all()
     tags = Tag.objects.all()
@@ -31,6 +33,7 @@ def home(request):
     return direct_to_template(request, 'blog/home.html', locals())
     
 def category(request, slug):
+    menu = Menu.objects.all()
     category = get_object_or_404(Category, slug=slug)
     posts = Post.objects.filter(categories = category, status = 1).order_by('-pub_date')
     categories = Category.objects.all()
@@ -50,6 +53,7 @@ def category(request, slug):
     return direct_to_template(request, 'blog/home.html', locals())
     
 def tag(request, slug):
+    menu = Menu.objects.all()
     tag = get_object_or_404(Tag, slug=slug)
     posts = Post.objects.filter(tags = tag, status = 1).order_by('-pub_date')
     categories = Category.objects.all()
@@ -69,6 +73,7 @@ def tag(request, slug):
     return direct_to_template(request, 'blog/home.html', locals())
     
 def post(request, year, month, day, slug):
+    menu = Menu.objects.all()
     date_stamp = time.strptime(year+month+day, "%Y%m%d")
     pub_date = datetime.date(*date_stamp[:3])
     post = get_object_or_404(Post, pub_date__year=pub_date.year, pub_date__month=pub_date.month, pub_date__day=pub_date.day, slug=slug, status=1)
@@ -95,6 +100,7 @@ def post(request, year, month, day, slug):
     return direct_to_template(request, 'blog/post.html', locals())
     
 def arhive(request, year, month):
+    menu = Menu.objects.all()
     date_stamp = time.strptime(year+month+str(12), "%Y%m%d")
     pub_date = datetime.date(*date_stamp[:3])
     posts = Post.objects.filter(status=1, pub_date__year=pub_date.year, pub_date__month=pub_date.month)
@@ -115,6 +121,7 @@ def arhive(request, year, month):
     return direct_to_template(request, 'blog/home.html', locals())
     
 def register(request):
+    menu = Menu.objects.all()
     form = UserCreationForm()
     if request.method == 'POST':
         data = request.POST.copy()
@@ -139,6 +146,7 @@ def profile(request):
     
 def search(request):
     # Наполнители
+    menu = Menu.objects.all()
     posts = Post.objects.filter(status = 1).order_by('-pub_date')
     categories = Category.objects.all()
     tags = Tag.objects.all()

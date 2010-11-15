@@ -19,7 +19,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'darkfraud',
-        'USER': 'darkfraud',
+        'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': '',
         'PORT': '',
@@ -73,4 +73,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'darkfraud.blog',
+    'darkfraud.menu',
+    'darkfraud.pages',
+    'darkfraud.files',
 )

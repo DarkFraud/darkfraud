@@ -1,0 +1,3 @@
+{% for menu in menu %}
+    <a class="parent" {% if menu.popup %}rel="facebox"{% endif %}{% if menu.tab %}target="_blank"{% endif %} href="{{ menu.url }}">{{ menu.title }}</a>
+{% endfor %}

@@ -27,6 +27,11 @@ urlpatterns += patterns('',
     (r'^search/$', 'darkfraud.blog.views.search'),
 )
 
+#Page
+urlpatterns += patterns('',
+    (r'^page/(?P<id>\d)/$',  'darkfraud.pages.views.page'),
+)
+
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),

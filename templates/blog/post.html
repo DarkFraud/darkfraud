@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
 {% block title %}Блог Кропотова Александра [Веб разработка / Web Developer] | {{ post.title }}{% endblock %}
-{% block menuTop %}{% endblock %}
+
+{% block menuTop %}
+    {% include "menu/menu_top.html" %}
+{% endblock %}
 
 {% block menuLeft %}
-    {% include "blog/menu_left.html" %}
+    {% include "menu/menu_left.html" %}
 {% endblock %}
 
 {% block content %}
                 <div class="hat">{{ post.title }}</div>
-                <div class="large_block">
+                <div class="blockText">
                     {{ post.content|safe }}
                     <div style="text-align:center; margin-bottom:5px;">
                         Добавил: {{ post.author }} Дата: {{ post.pub_date }}<br />

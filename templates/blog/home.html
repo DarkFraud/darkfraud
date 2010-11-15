@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 
-{% block menuTop %}{% endblock %}
+{% block menuTop %}
+    {% include "menu/menu_top.html" %}
+{% endblock %}
 
 {% block menuLeft %}
-    {% include "blog/menu_left.html" %}
+    {% include "menu/menu_left.html" %}
 {% endblock %}
 
 {% block content %}
     {% for post in posts.object_list %}
                 <div class="hat">{{ post.title }}</div>
-                <div class="large_block">
+                <div class="blockText">
                     {{ post.content|safe|truncatewords_html:100 }}
                     <div style="text-align:center; margin-bottom:5px;">
                         Добавил: {{ post.author }} Дата: {{ post.pub_date }}<br />

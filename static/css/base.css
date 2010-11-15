@@ -17,6 +17,15 @@ a:hover {
     border-bottom: 1px solid #191919;
     height:45px;
 }
+#header a {
+    color:#fff;
+    text-decoration: none;
+    padding: 0 3px;
+}
+#header a:hover {
+    color:#464646;
+    padding: 0 3px;
+}
 #sidebar { /* Левая колонка */
     float: left; /* Обтекание справа */
     border: 0px solid #333; /* Параметры рамки вокруг */
@@ -38,6 +47,21 @@ a:hover {
     width: 100%; /* Ширина слоя */
     border-top: 1px solid #191919;
 }
+/* Верхнее меню */
+.topmenu {
+    position: absolute;
+    top:23px;
+    left:270px;
+    color:#464646;
+}
+/* Поиск */
+.search {
+    position: absolute;
+    top:15px;
+    right:10px;
+    color:#71726c;
+}
+/* верх блоков */
 .hat {
     background: url(/static/images/hat.gif) repeat-x;
     height:29px;
@@ -45,21 +69,11 @@ a:hover {
     text-align: center;
     padding-top:3px;
 }
-.small_block {
+/* Блоки меню и контента */
+.blockText {
     margin-bottom:10px;
     background:#464646;
     padding:10px;
-}
-.large_block {
-    margin-bottom:10px;
-    background:#464646;
-    padding:10px;
-}
-.search {
-    float: right;
-    color:#71726c;
-    font-size:14px;
-    margin-top:7px;
 }
 textarea, input {
     color:#71726c;
@@ -71,6 +85,12 @@ textarea, input {
 a.submit {
     background:#606060;
     color:#fff;
+    padding:5px;
+    text-decoration: none;
+}
+a.submit:hover {
+    background:#fff;
+    color:#464646;
     padding:5px;
     text-decoration: none;
 }

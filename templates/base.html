@@ -8,9 +8,11 @@
     <meta name="google-site-verification" content="flAXnL5BeVfEKnHxPNPs1bmOuW1BcC51BfTgCVNOado" />
     <title>{% block title %}Блог Кропотова Александра [Веб разработка / Web Developer]{% endblock %}</title>
     <link href="/static/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/facebox.css" media="screen" rel="stylesheet" type="text/css"/>
     <script type="text/JavaScript" src="/static/javascript/jquery-1.4.2.min.js" charset="utf-8"></script>
     <script type="text/JavaScript" src="/static/javascript/jquery.curvycorners.source.js" charset="utf-8"></script>
     <script src="/static/javascript/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/javascript/facebox.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/JavaScript" charset="utf-8">
         $(function(){
             settings = {
@@ -23,16 +25,7 @@
                 validTags: ["div"]
             }
             $('.hat').corner(settings);
-            $('.large_block').corner({
-                tl: { radius: 0 },
-                tr: { radius: 0 },
-                bl: { radius: 10 },
-                br: { radius: 10 },
-                antiAlias: true,
-                autoPad: true,
-                validTags: ["div"]
-            });
-            $('.small_block').corner({
+            $('.blockText').corner({
                 tl: { radius: 0 },
                 tr: { radius: 0 },
                 bl: { radius: 10 },
@@ -77,16 +70,21 @@
             });
             $('.hat').css({opacity: "0.4"})
             $('.submit').css({opacity: "0.4"})
+            $('a[rel*=facebox]').facebox({
+                loadingImage : '/static/images/facebox/loading.gif',
+                closeImage   : '/static/images/facebox/closelabel.gif',
+            })
         })
     </script>
 </head>
 <body>
     <div id="header">
         <a href="/"><div style="width:230px; height:50px; float:left;"></div></a>
+        <div class="topmenu">{% block menuTop %}{% endblock %}</div>
         <div class="search">
             <form action="/search/" method="get">
-                <a class="submit" href="/accounts/login/">Войти</a>
-                <a class="submit" href="/accounts/register/">Регистрация</a>
+                <a href="/accounts/login/">Войти</a>
+                <a href="/accounts/register/">Регистрация</a>
                 <input type="text" name="q" value="Поиск...">
             </form>
         </div>
@@ -97,6 +95,16 @@
     <div id="content">
         {% block content %}{% endblock %}
     </div>
-    <div id="footer">&copy; Alexander Kropotov "That's me"</div>
+    <div id="footer">&copy; Alexander Kropotov That's me</div>
+<!-- Yandex.Metrika -->
+<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+<div style="display:none;"><script type="text/javascript">
+try { var yaCounter1786090 = new Ya.Metrika(1786090);
+yaCounter1786090.clickmap(true);
+yaCounter1786090.trackLinks(true);
+} catch(e){}
+</script></div>
+<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/1786090" alt="" /></div></noscript>
+<!-- /Yandex.Metrika -->
 </body>
 </html>
